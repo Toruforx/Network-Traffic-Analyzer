@@ -28,12 +28,11 @@ typedef struct _ether_header {
 #define IPTOSBUFFERS 12
 /* IPv4 header */
 typedef struct _ip_header {
-    uint32_t ver;// Version
-    uint32_t hl;// Internet header length
+    uint8_t ver_ihl;// Version + Internet header length
     uint8_t tos; // Type of service
     uint16_t tlen; // Total length
     uint16_t ident; // Identification
-    uint16_t offset; // Fragment offset
+    uint16_t flags_off; // Flags + Fragment offset
     uint8_t ttl; // Time to live
     uint8_t proto; // Protocol
     #define IP_ICMP 1

@@ -265,42 +265,12 @@ void clear_hash_table() {
     }
 }
 
-void data_analysis(u_char *userarg, const struct pcap_pkthdr *pkthdr, const u_char *packet);
-
-int main() {
-    char *file_in = "traffic.data";
-    FILE *file_i = fopen(file_in, "r");
-    printf("载入文件...\n");
-    int cycle;
-    printf("输入分析周期(s)：");
-    scanf("%d", &cycle);
-
-    pcap_t *handle;
-    char err_inf[PCAP_ERRBUF_SIZE];
-    handle = pcap_open_offline(file_in, err_inf);
-    printf("开始分析\n");
-
-    flow_TCP = (net_link_header *)malloc(sizeof(net_link_header));
-    init_flow_link(flow_TCP);
-    flow_UDP = (net_link_header *)malloc(sizeof(net_link_header));
-    init_flow_link(flow_UDP);
-    
-    pcap_loop(handle, -1, data_analysis, &cycle);
-    sleep(cycle);
-    printf("分析结束\n");
-
-    free(flow_TCP);
-    free(flow_UDP);
-
-    return 0;
-}
-
 void data_analysis(u_char *userarg, const struct pcap_pkthdr *pkthdr, const u_char *packet) {
     static int id = 1;
-    ether_header *ehdr = (ether_header *)packet;
-    ip_header *iphdr = (ip_header *)(packet + sizeof(ether_header));
-    tcp_header *tcphdr = (tcp_header *)(packet + sizeof(ether_header) + sizeof(ip_header));
-    udp_header *udphdr = (udp_header *)(packet + sizeof(ether_header) + sizeof(ip_header));
+    ether_header *ehdr = (ether_header *)packet; // 得到以太网字头
+    ip_header *iphdr = (ip_header *)(packet + sizeof(struct ether_header)); // 得到 IP 报头
+    tcp_header *tcphdr = (tcp_header *)(packet + sizeof(struct ether_header) + sizeof(struct ip)); // 得到 TCP 包头
+    udp_header *udphdr = (udp_header *)(packet + sizeof(struct ether_header) + sizeof(struct ip)); // 得到 UDP 包头
     netset *netst = (netset *)malloc(sizeof(netset));
     net_link_node *lnode = (net_link_node *)malloc(sizeof(net_link_node));
 
@@ -318,6 +288,7 @@ void data_analysis(u_char *userarg, const struct pcap_pkthdr *pkthdr, const u_ch
     u_short tcp_len_real = 0;
     u_short data_len = 0;
 
+    
     if(id == 1) {
         work_start = pkthdr -> ts.tv_sec;
         work_end = work_start;
@@ -344,19 +315,19 @@ void data_analysis(u_char *userarg, const struct pcap_pkthdr *pkthdr, const u_ch
         work_end = work_now;
     }
     if(ntohs(ehdr -> type) == ETHERTYPE_IP) {
-        if(iphdr -> proto == IP_TCP || iphdr -> proto == IP_UDP) {
-            ip_len_real = (iphdr -> hl & 0x0f) * 4;
-            ip_len_total = ntohs(iphdr -> tlen);
+        ip_len_real = (iphdr -> ver_ihl & 0x0f) * 4;
+        ip_len_total = ntohs(iphdr -> tlen);
+        if(iphdr -> proto == IPPROTO_TCP || iphdr -> proto == IPPROTO_UDP) {
             netst -> sip = iphdr -> saddr;
             netst -> dip = iphdr -> daddr;
             netst -> protocol = iphdr -> proto;
-            if(iphdr -> proto == IP_TCP) {
-                tcp_len_real = (((tcphdr -> th_len) >> 4) & 0x0f) * 4;
+            if(iphdr -> proto == IPPROTO_TCP) {
+                tcp_len_real = (((tcphdr -> th_len)>>4) & 0x0f) * 4;
                 data_len = ip_len_total - ip_len_real - tcp_len_real;
                 netst -> sport = ntohs(tcphdr -> th_sport);
                 netst -> dport = ntohs(tcphdr -> th_dport);
             }
-            else if(iphdr -> proto == IP_UDP) {
+            else if(iphdr -> proto == IPPROTO_UDP) {
                 data_len = ntohs(udphdr -> uh_len) - UDP_LEN;
                 netst -> sport = ntohs(udphdr -> uh_sport);
                 netst -> dport = ntohs(udphdr -> uh_dport);
@@ -368,10 +339,10 @@ void data_analysis(u_char *userarg, const struct pcap_pkthdr *pkthdr, const u_ch
             lnode -> down_num = 0;
             lnode -> state = ESTAB;
             lnode -> next = NULL;
-            if(iphdr -> proto == IP_TCP) {
+            if(iphdr -> proto == IPPROTO_TCP) {
                 add_hash_table(get_hash(netst), lnode, tcphdr -> th_flags);
             }
-            else if(iphdr -> proto == IP_UDP) {
+            else if(iphdr -> proto == IPPROTO_UDP) {
                 add_flow_link(flow_UDP, lnode);
             }
         }
@@ -384,13 +355,6 @@ void data_analysis(u_char *userarg, const struct pcap_pkthdr *pkthdr, const u_ch
 
     fprintf(file, "-----------------数据链路层 解析以太网帧-----------------\n");
     u_char *ptr;
-    ptr = ehdr -> host_dest;
-    fprintf(file, "目的MAC地址：");
-    fprintf(file, "%x", ptr[0]);
-    for(int i = 1; i < ETHER_ADDR_LEN; i ++) {
-        fprintf(file, ":%x", ptr[i]);
-    }
-    fprintf(file, "\n");
     ptr = ehdr -> host_src;
     fprintf(file, "源MAC地址：");
     fprintf(file, "%x", ptr[0]);
@@ -399,21 +363,29 @@ void data_analysis(u_char *userarg, const struct pcap_pkthdr *pkthdr, const u_ch
     }
     fprintf(file, "\n");
 
+    ptr = ehdr -> host_dest;
+    fprintf(file, "目的MAC地址：");
+    fprintf(file, "%x", ptr[0]);
+    for(int i = 1; i < ETHER_ADDR_LEN; i ++) {
+        fprintf(file, ":%x", ptr[i]);
+    }
+    fprintf(file, "\n");
+
     fprintf(file, "以太网帧类型：%x\n", ntohs(ehdr -> type));
     fprintf(file, "-----------------数据链路层 解析 IP 报头-----------------\n");
-    fprintf(file, "版本号：%d\n", iphdr -> ver);
-    fprintf(file, "首部长度：%d\n", iphdr -> hl);
+    fprintf(file, "版本号：%d\n", iphdr -> ver_ihl >> 4);
+    fprintf(file, "首部长度：%d\n", iphdr -> ver_ihl & 0x0f);
     fprintf(file, "服务类型：%hhu\n", iphdr -> tos);
     fprintf(file, "报文总长度：%d\n", ntohs(iphdr -> tlen));
     fprintf(file, "标识：%d\n", ntohs(iphdr -> ident));
-    fprintf(file, "片偏移：%d\n", ntohs(iphdr -> offset));
+    fprintf(file, "片偏移：%d\n", ntohs(iphdr -> flags_off & 0x1fff));
     fprintf(file, "生存时间：%hhu\n", iphdr -> ttl);
     fprintf(file, "协议类型：%hhu\n", iphdr -> proto);
     fprintf(file, "首部校验和：%d\n", ntohs(iphdr -> crc));
     fprintf(file, "源地址：%s\n", iptos(iphdr -> saddr));
     fprintf(file, "目的地址：%s\n", iptos(iphdr -> daddr));
 
-    if(iphdr -> proto == IP_TCP) {    
+    if(iphdr -> proto == IPPROTO_TCP) {    
         fprintf(file, "-----------------数据链路层 解析 TCP 报头-----------------\n");
         fprintf(file, "目的端口：%d\n", ntohs(tcphdr -> th_dport));
         fprintf(file, "源端口：%d\n", ntohs(tcphdr -> th_sport));
@@ -425,7 +397,7 @@ void data_analysis(u_char *userarg, const struct pcap_pkthdr *pkthdr, const u_ch
         fprintf(file, "窗口：%d\n", ntohs(tcphdr -> th_win));
         fprintf(file, "校验和：%d\n", ntohs(tcphdr -> th_sum));
         fprintf(file, "紧急：%d\n", ntohs(tcphdr -> th_urp));    
-    }else if(iphdr -> proto == IP_UDP) {
+    }else if(iphdr -> proto == IPPROTO_UDP) {
         
         fprintf(file, "----------------数据链路层 解析 UDP 报头-----------------\n");
         fprintf(file, "源端口：%d\n", ntohs(udphdr -> uh_sport));
@@ -437,5 +409,31 @@ void data_analysis(u_char *userarg, const struct pcap_pkthdr *pkthdr, const u_ch
     fprintf(file, "**************************结束**************************\n");
     free(netst);
     free(lnode);
-    free(file);
+    fclose(file);
+}
+
+int main(int argc, char **argv) {
+    char *file_in = "traffic.data";
+    FILE *file_i = fopen(file_in, "r");
+    printf("载入文件...\n");
+    int cycle;
+    printf("输入分析周期(s)：");
+    scanf("%d", &cycle);
+
+    pcap_t *handle;
+    char err_inf[PCAP_ERRBUF_SIZE];
+    handle = pcap_open_offline(file_in, err_inf);
+    printf("开始分析\n");
+
+    flow_TCP = (net_link_header *)malloc(sizeof(net_link_header));
+    flow_UDP = (net_link_header *)malloc(sizeof(net_link_header));
+    init_flow_link(flow_TCP);
+    init_flow_link(flow_UDP);
+    
+    pcap_loop(handle, -1, data_analysis, &cycle);
+    printf("分析结束\n");
+    free(flow_TCP);
+    free(flow_UDP);
+
+    return 0;
 }
