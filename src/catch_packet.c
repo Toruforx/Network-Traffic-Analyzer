@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <pcap.h>
+#include <pthread.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -10,14 +11,24 @@
 #include <netinet/tcp.h>
 #include <netinet/udp.h>
 
-void callback(u_char *dumpfile, const struct pcap_pkthdr *pkthdr, const u_char *packet) {
+int id = 0;
+typedef struct _argument {
+    pcap_t *handle;
+    int time_len;
+}argument;
+
+void *thread_clock(void *argv) {
+    pcap_t *handle = ((argument*)argv) -> handle;
+    int time_len = ((argument*)argv) -> time_len;
+    sleep(time_len);
+    pcap_breakloop(handle);
+}
+void get_packet(u_char *dumpfile, const struct pcap_pkthdr *pkthdr, const u_char *packet) {
     pcap_dump(dumpfile, pkthdr, packet);
-    static int id = 0;
-    ++ id;
-    printf("The %d packet length: %d\n", id, pkthdr->len);
+    id ++;
 }
 
-int main(int argc, char const *argv[]) {
+int main() {
     pcap_t *handle;
     char *device;
     bpf_u_int32 mask, net;
@@ -26,7 +37,7 @@ int main(int argc, char const *argv[]) {
     char filter_expsn[] = "ip";
     pcap_dumper_t *file;
     char file_name[] = "traffic.data";
-    int flag, to_ms;
+    int flag, cycle;
 
     device = pcap_lookupdev(err_inf);
     if(device == NULL) {
@@ -41,11 +52,7 @@ int main(int argc, char const *argv[]) {
         return 1;
     }
     
-    printf("请输入抓取时长(s）：");
-    scanf("%d", &to_ms);
-    to_ms *= 1000; // 秒数转换为毫秒数
-    
-    handle = pcap_open_live(device, 65535, 1, to_ms, err_inf);
+    handle = pcap_open_live(device, BUFSIZ, 1, 0, err_inf);
     if(handle == NULL) {
         printf("pcap_open_live: %s\n", err_inf);
         return 1;
@@ -69,8 +76,21 @@ int main(int argc, char const *argv[]) {
         return 1;
     }
 
-    pcap_dispatch(handle, 0, callback, (u_char*) file);
-    printf("Crawl succeeded\n");
+    pthread_t pt_clock;
+    argument args;
+    args.handle = handle;
+    printf("请输入抓取时长(s）：");
+    scanf("%d", &cycle);
+    args.time_len = cycle;
+    flag = pthread_create(&pt_clock, NULL, thread_clock, &args);
+    if(flag != 0) {
+        printf("pthread_create(): Error!\n");
+        return 1;
+    }
+
+    pcap_loop(handle, -1, get_packet, (u_char*) file);
+    
+    printf("抓取结束\n");
     pcap_dump_close(file);
     pcap_close(handle);
     return 0;

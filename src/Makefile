@@ -4,7 +4,7 @@ ana: data_analysis.o
 	gcc $< -o $@ -lpcap
 
 catch: catch_packet.o
-	gcc $< -o $@ -lpcap
+	gcc $< -o $@ -lpcap -lpthread
 
 catch_packet.o: catch_packet.c
 	gcc -c catch_packet.c -o catch_packet.o -g

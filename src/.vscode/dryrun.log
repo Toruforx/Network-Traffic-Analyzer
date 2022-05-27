@@ -1,0 +1,8 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/toru/Network-Traffic-Analyzer/src'
+gcc -c data_analysis.c -o data_analysis.o -g
+gcc data_analysis.o -o ana -lpcap
+gcc -c catch_packet.c -o catch_packet.o -g
+gcc catch_packet.o -o catch -lpcap -lpthread
+make: Leaving directory '/home/toru/Network-Traffic-Analyzer/src'
+ 
