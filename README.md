@@ -2,4 +2,4 @@
 
 ## Introduction
 
-C Implementation of real-time capture and data analysis of network data packets
+C Implementation of Real-time Capture and Data Analysis of Network Data Packets
