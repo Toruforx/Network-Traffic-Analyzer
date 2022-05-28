@@ -12,23 +12,27 @@
 #include <netinet/udp.h>
 
 int id = 0;
-typedef struct _argument {
+typedef struct _argument
+{
     pcap_t *handle;
     int time_len;
-}argument;
+} argument;
 
-void *thread_clock(void *argv) {
-    pcap_t *handle = ((argument*)argv) -> handle;
-    int time_len = ((argument*)argv) -> time_len;
+void *thread_clock(void *argv)
+{
+    pcap_t *handle = ((argument *)argv)->handle;
+    int time_len = ((argument *)argv)->time_len;
     sleep(time_len);
     pcap_breakloop(handle);
 }
-void get_packet(u_char *dumpfile, const struct pcap_pkthdr *pkthdr, const u_char *packet) {
+void get_packet(u_char *dumpfile, const struct pcap_pkthdr *pkthdr, const u_char *packet)
+{
     pcap_dump(dumpfile, pkthdr, packet);
-    id ++;
+    id++;
 }
 
-void catch_pkt(char* file_out, char* filter_expsn, int cycle) {
+void catch_pkt(char *file_out, char *filter_expsn, int cycle)
+{
     pcap_t *handle;
     char *device;
     bpf_u_int32 mask, net;
@@ -38,38 +42,44 @@ void catch_pkt(char* file_out, char* filter_expsn, int cycle) {
     int flag;
 
     device = pcap_lookupdev(err_inf);
-    if(device == NULL) {
+    if (device == NULL)
+    {
         printf("pcap_lookupdev: %s\n", err_inf);
         return;
     }
     printf("device: %s\n", device);
 
     flag = pcap_lookupnet(device, &net, &mask, err_inf);
-    if(flag == -1) {
+    if (flag == -1)
+    {
         printf("pcap_lookupnet: %s\n", err_inf);
         return;
     }
-    
+
     handle = pcap_open_live(device, BUFSIZ, 1, 0, err_inf);
-    if(handle == NULL) {
+    if (handle == NULL)
+    {
         printf("pcap_open_live: %s\n", err_inf);
         return;
     }
 
     flag = pcap_compile(handle, &filter, filter_expsn, 1, mask);
-    if(flag == -1) {
+    if (flag == -1)
+    {
         printf("pcap_compile: Error\n");
         return;
     }
 
     flag = pcap_setfilter(handle, &filter);
-    if(flag == -1) {
+    if (flag == -1)
+    {
         printf("pcap_setfilter: Error\n");
         return;
     }
 
     file = pcap_dump_open(handle, file_out);
-    if(file == NULL) {
+    if (file == NULL)
+    {
         printf("pcap_dump_open: %s\n", pcap_geterr(handle));
         return;
     }
@@ -79,13 +89,14 @@ void catch_pkt(char* file_out, char* filter_expsn, int cycle) {
     args.handle = handle;
     args.time_len = cycle;
     flag = pthread_create(&pt_clock, NULL, thread_clock, &args);
-    if(flag != 0) {
+    if (flag != 0)
+    {
         printf("pthread_create(): Error!\n");
         return;
     }
 
-    pcap_loop(handle, -1, get_packet, (u_char*) file);
-    
+    pcap_loop(handle, -1, get_packet, (u_char *)file);
+
     printf("Catch success\n");
     pcap_dump_close(file);
     pcap_close(handle);
@@ -95,31 +106,31 @@ void catch_pkt(char* file_out, char* filter_expsn, int cycle) {
 #if 1
 int main(int argc, void *argv[])
 {
-	char *option, *file_out, *filter;
+    char *option, *file_out, *filter;
     int time;
 
-	if (argc != 5)
-	{
-		printf("Usage: catch_packet <--catch> <file_out> <filter> <time>\n");
-		return 0;
-	}
-	else
-	{
-		option = argv[1];
+    if (argc != 5)
+    {
+        printf("Usage: catch_packet <--catch> <file_out> <filter> <time>\n");
+        return 0;
+    }
+    else
+    {
+        option = argv[1];
         file_out = argv[2];
         filter = argv[3];
-		time = strtol(argv[4], NULL, 10);
-		if (strcmp(option, "--catch") == 0)
-		{
-			catch_pkt(file_out, filter, time);
-		}
-		else
-		{
-			printf("Usage: catch_packet <--catch> <file_out> <filter> <time>\n");
-			return 0;
-		}
-	}
+        time = strtol(argv[4], NULL, 10);
+        if (strcmp(option, "--catch") == 0)
+        {
+            catch_pkt(file_out, filter, time);
+        }
+        else
+        {
+            printf("Usage: catch_packet <--catch> <file_out> <filter> <time>\n");
+            return 0;
+        }
+    }
 
-	return 0;
+    return 0;
 }
 #endif

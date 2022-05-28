@@ -1,0 +1,322 @@
+make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.82.90
+# Built for i686-pc-mingw32
+# Copyright (C) 1988-2012 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+ 
+
+# Make data base, printed on Sun May 29 00:34:55 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
+# automatic
+?F = $(notdir $?)
+# default
+.SHELLFLAGS := -c
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
+# environment
+LINGO64_17_HOME = D:\LINGO64_17\
+# automatic
+@D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
+# environment
+HOMEDRIVE = C:
+# automatic
+@F = $(notdir $@)
+# automatic
+^D = $(patsubst %/,%,$(patsubst %\,%,$(dir $^)))
+# makefile
+CURDIR := c:/Users/35947/Desktop/Hands/Network-Traffic-Analyzer
+# default
+SHELL := sh.exe
+# environment
+JRE_HOME = C:\Java\jdk-16.0.2\jre
+# environment
+WINDIR = C:\Windows
+# environment
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"C:\\Users\\35947\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\tcf.json","_cacheRoot":"C:\\Users\\3 
+5947\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"C:\\Users\\35947\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"C:\\Users\\35947\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\corrupted.info","_languagePackSupport":true}
+# environment
+ONEDRIVE = C:\Users\35947\OneDrive
+# environment
+MAVEN_HOME = D:\apache-maven-3.8.4-bin\apache-maven-3.8.4
+# environment
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+# makefile
+MAKEFILE_LIST := 
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
+# environment
+TMP = C:\Users\35947\AppData\Local\Temp
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+PROGRAMW6432 = C:\Program Files
+# environment
+PROGRAMDATA = C:\ProgramData
+# environment
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-9a00f586-ff98-4740-b85a-3833b0264814-sock
+# environment
+VSCODE_CWD = D:\Program Files\Microsoft VS Code
+# environment
+PATH = D:\WebSec\bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\MinGW\bin;C:\Java\jdk-16.0.2\bin;D:\matlab\2020a\runtime\win64;D:\matlab\2020a\bin;D:\matlab\2020a\polyspace\bin;D:\LINGO64_17\;D:\apache-maven-3.8.4-bin\apache-maven-3.8.4\bin;C:\Program Files\Git\cmd;D:\Program Files\Go\bin;C:\ProgramData\chocolatey\bin;C:\Users\35947\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\35947\AppData\Local\Programs\Python\Python39\;D:\Program Files\Microsoft VS Code\bin;C:\Users\35947\go\bin;C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin;
+# environment
+COMMONPROGRAMW6432 = C:\Program Files\Common Files
+# environment
+CHOCOLATEYLASTPATHUPDATE = 132975939720686480
+# environment
+PROCESSOR_ARCHITECTURE = x86
+# environment
+USERPROFILE = C:\Users\35947
+# environment
+CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
+# environment
+ALLUSERSPROFILE = C:\ProgramData
+# environment
+GOPATH = C:\Users\35947\go
+# environment
+VSCODE_LOG_STACK = false
+# environment
+NUMBER_OF_PROCESSORS = 16
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver
+# automatic
+%F = $(notdir $%)
+# environment
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15476_XEKYUIPYRKQJTDLM
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+COMPUTERNAME = LAPTOP-LJQDU8G0
+# environment
+PROGRAMFILES = C:\Program Files (x86)
+# environment
+DRIVERDATA = C:\Windows\System32\Drivers\DriverData
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+USERNAME = Toru
+# environment
+PUBLIC = C:\Users\Public
+# environment
+PT5HOME = D:\Program Files (x86)\Cisco Packet Tracer 6.0
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+PT6HOME = D:\Program Files (x86)\Cisco Packet Tracer 6.0
+# environment
+VSCODE_CODE_CACHE_PATH = C:\Users\35947\AppData\Roaming\Code\CachedData\c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
+# environment
+LOGONSERVER = \\LAPTOP-LJQDU8G0
+# environment
+ONEDRIVECONSUMER = C:\Users\35947\OneDrive
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+USERDOMAIN = LAPTOP-LJQDU8G0
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+JAVA_HOME = C:\Java\jdk-16.0.2
+# default
+MAKE_VERSION := 3.82.90
+# makefile
+.DEFAULT_GOAL := 
+# environment
+CLASSPATH = .;C:\Java\jdk-16.0.2\lib;C:\Java\jdk-16.0.2\jre\lib;D:\LINGO64_17\Lingo17.jar
+# environment
+PROGRAMFILES(X86) = C:\Program Files (x86)
+# automatic
+%D = $(patsubst %/,%,$(patsubst %\,%,$(dir $%)))
+# environment
+LOCALAPPDATA = C:\Users\35947\AppData\Local
+# environment
+PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+# default
+MAKE_COMMAND := make.exe
+# environment
+PROCESSOR_ARCHITEW6432 = AMD64
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD
+# environment
+OS = Windows_NT
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\8583d1c674346580d377dc391f4e1d3c-1.67.2-main-sock
+# environment
+HOMEPATH = \Users\35947
+# environment
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+# environment
+PROMPT = $P$G
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
+# environment
+SYSTEMROOT = C:\Windows
+# automatic
++D = $(patsubst %/,%,$(patsubst %\,%,$(dir $+)))
+# automatic
++F = $(notdir $+)
+# environment
+APPDATA = C:\Users\35947\AppData\Roaming
+# environment
+TEMP = C:\Users\35947\AppData\Local\Temp
+# environment
+COMSPEC = C:\Windows\system32\cmd.exe
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+SYSTEMDRIVE = C:
+# environment
+SESSIONNAME = Console
+# environment
+PROCESSOR_REVISION =  
+6801
+# environment
+MOZ_PLUGIN_PATH = D:\Program Files (x86)\Foxit Software\Foxit Reader Plus\plugins\
+# default
+.INCLUDE_DIRS = C:/MinGW/include
+# default
+.RECIPEPREFIX := 
+# environment
+LANG = C
+# environment
+PROCESSOR_LEVEL = 23
+# environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+# environment
+VSCODE_PID = 15476
+# environment
+USERDOMAIN_ROAMINGPROFILE = LAPTOP-LJQDU8G0
+# variable set hash-table stats:
+# Load=103/1024=10%, Rehash=0, Collisions=12/119=10%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# D:\matlab\2020a\bin: could not be stat'd.
+# C:\Windows\System32\WindowsPowerShell\v1.0\ (key C:/Windows/System32/WindowsPowerShell/v1.0/, mtime 1605755050): 31 files, no impossibilities.
+# D:\apache-maven-3.8.4-bin\apache-maven-3.8.4\bin: could not be stat'd.
+# . (key c:/Users/35947/Desktop/Hands/Network-Traffic-Analyzer, mtime 1653752568): 7 files, no impossibilities.
+# C:\Users\35947\AppData\Local\Programs\Python\Python39\ (key C:/Users/35947/AppData/Local/Programs/Python/Python39/, mtime 1629252857): 18 files, no impossibilities.
+# C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1645579065): 8 files, no impossibilities.
+# C:\Windows\System32\OpenSSH\: could not be stat'd.
+# C:\Users\35947\AppData\Local\Programs\Python\Python39\Scripts\ (key C:/Users/35947/AppData/Local/Programs/Python/Python39/Scripts/, mtime 1631191906): 15 files, no impossibilities.
+# C:\Users\35947\go\bin: could not be stat'd.
+# C:\MinGW\bin (key C:/MinGW/bin, mtime 1632999108): 60 files, no impossibilities.
+# D:\matlab\2020a\runtime\win64: could not be stat'd.
+# C:\ProgramData\chocolatey\bin (key C:/ProgramData/chocolatey/bin, mtime 1653120398): 79 files, no impossibilities.
+# C:\Windows (key C:/Windows, mtime 1633765888): 140 files, no impossibilities.
+# D:\Program Files\Go\bin (key D:/Program Files/Go/bin, mtime 1652853799): 4 files, no impossibilities.
+# C:\Windows\System32\Wbem (key C:/Windows/System32/Wbem, mtime 1649411139): 155 files, no impossibilities.
+# D:\LINGO64_17\ (key D:/LINGO64_17/, mtime 1630154452): 39 files, no impossibilities.
+# C:\Java\jdk-16.0.2\bin (key C:/Java/jdk-16.0.2/bin, mtime 1628664431): 123 files, no impossibilities.
+# C:\Windows\system32 (key C:/Windows/system32, mtime 1653705690): 3009 files, no impossibilities.
+# D:\WebSec\bin\ (key D:/WebSec/bin/, mtime 1643293971): 4 files, no impossibilities.
+# D:\Program Files\Microsoft VS Code\bin (key D:/Program Files/Microsoft VS Code/bin, mtime 1652981159): 4 files, no impossibilities.
+# C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin (key C:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin, mtime 1627494955): 84 files, no impossibilities.
+# D:\matlab\2020a\polyspace\bin: could not be stat'd.
+
+# 3780 files, no impossibilities in 22 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+GNUmakefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# files hash-table stats:
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 7 (6) / strings = 3619 / storage = 54843 B / avg = 15 B
+# current buf: size = 8174 B / used = 5866 B / count = 399 / avg = 14 B
+# other used: total = 46669 B / count = 3220 / avg = 14 B
+# other free: total = 67 B / max = 14 B / min = 8 B / avg = 11 B
+
+# strcache performance: lookups = 3810 / hit rate = 5%
+# hash-table stats:
+# Load=3619/8192=44%, Rehash=0, Collisions=1351/3810=35%
+# Finished Make data base on Sun May 29 00:34:55 2022
+
+ 
+make.exe: *** No rule to make target 'all'.  Stop.
+
