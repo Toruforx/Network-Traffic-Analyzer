@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 27 13:00:17 2022
+# Make data base, printed on Sun May 29 00:29:51 2022
 
 # Variables
 
@@ -40,6 +40,7 @@ SHELL = /bin/sh
 VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{}}
 # environment
 _ = /home/toru/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/node
+ 
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
@@ -55,7 +56,7 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/toru
 # environment
-SSH_CONNECTION = 127.0.0.1 46036 127.0.0.1 22
+SSH_CONNECTION = 127.0.0.1 53260 127.0.0.1 22
 # environment
 PATH = /home/toru/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
@@ -63,13 +64,13 @@ XDG_RUNTIME_DIR = /run/user/1001
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1001/vscode-ipc-59a79c15-398d-4d2f-b2e1-f0a0c852f27a.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1001/vscode-ipc-2764b668-d48e-41b0-a10a-6bd45402ed94.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
 LS_COLORS = 
 # environment
-SSH_AUTH_SOCK = /run/user/1001/vscode-ssh-auth-sock-402632128
+SSH_AUTH_SOCK = /run/user/1001/vscode-ssh-auth-sock-715525046
 # automatic
 %F = $(notdir $%)
 # environment
@@ -105,7 +106,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 1
 # environment
-XDG_SESSION_ID = 721
+XDG_SESSION_ID = 831
 # environment
 USER = toru
 # makefile
@@ -125,7 +126,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 127.0.0.1 46036 22
+SSH_CLIENT = 127.0.0.1 53260 22
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -165,9 +166,9 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# . (device 66308, inode 2099854): 7 files, no impossibilities.
+# . (device 66308, inode 2099854): 13 files, no impossibilities.
 
-# 7 files, no impossibilities in 1 directories.
+# 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -178,7 +179,7 @@ MOTD_SHOWN = pam
 # Not a target:
 data_analysis.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-26 16:55:32.608796564
+#  Last modified 2022-05-29 00:29:26.077959689
 #  File has been updated.
 #  Successfully updated.
 
@@ -200,13 +201,13 @@ all: ana catch
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-27 12:56:28.871168836
+#  Last modified 2022-05-29 00:28:16.841669915
 #  File has been updated.
 #  Successfully updated.
 
 ana: data_analysis.o
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Last modified 2022-05-29 00:27:48.24155031
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -218,6 +219,7 @@ catch_packet.o: catch_packet.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 #  recipe to execute (from 'Makefile', line 10):
 	gcc -c catch_packet.c -o catch_packet.o -g
 
@@ -239,12 +241,12 @@ clean:
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 16):
-	rm -rf ana catch *.o result.data traffic.data
+	rm -rf ana catch *.o *.data
 
 data_analysis.o: data_analysis.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: ''
-#  File does not exist.
+#  Last modified 2022-05-29 00:27:48.22955026
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
@@ -281,14 +283,14 @@ catch_packet.c:
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
- 
 
-# strcache buffers: 1 (0) / strings = 17 / storage = 166 B / avg = 9 B
-# current buf: size = 8162 B / used = 166 B / count = 17 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 19 / storage = 187 B / avg = 9 B
+# current buf: size = 8162 B / used = 187 B / count = 19 / avg = 9 B
 
-# strcache performance: lookups = 35 / hit rate = 51%
+# strcache performance: lookups = 41 / hit rate = 53%
 # hash-table stats:
-# Load=17/8192=0%, Rehash=0, Collisions=1/35=3%
-# Finished Make data base on Fri May 27 13:00:17 2022
+ 
+# Load=19/8192=0%, Rehash=0, Collisions=1/41=2%
+# Finished Make data base on Sun May 29 00:29:51 2022
 
  

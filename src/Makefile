@@ -13,4 +13,4 @@ data_analysis.o: data_analysis.c
 	gcc -c data_analysis.c -o data_analysis.o -g
 
 clean:
-	rm -rf ana catch *.o result.data traffic.data
+	rm -rf ana catch *.o *.data

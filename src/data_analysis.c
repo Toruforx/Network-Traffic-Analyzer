@@ -17,6 +17,8 @@
 #include "protocol.h"
 #define HASH_TABLE_SIZE 0xffff
 
+char* file_out;
+
 typedef struct _netset {
     u_int sip;
     u_int dip;
@@ -279,9 +281,8 @@ void data_analysis(u_char *userarg, const struct pcap_pkthdr *pkthdr, const u_ch
     static long work_end = 0;
     static long work_now = 0;
 
-    char *file_o = "result.data";
     FILE *file;
-    file = fopen(file_o, "a+");
+    file = fopen(file_out, "a+");
 
     u_short ip_len_real = 0;
     u_short ip_len_total = 0;
@@ -292,9 +293,9 @@ void data_analysis(u_char *userarg, const struct pcap_pkthdr *pkthdr, const u_ch
     if(id == 1) {
         work_start = pkthdr -> ts.tv_sec;
         work_end = work_start;
-        file = fopen(file_o, "w");
+        file = fopen(file_out, "w");
         fclose(file);
-        file = fopen(file_o, "a+");
+        file = fopen(file_out, "a+");
         fprintf(file, "数据文件：%s\n", "traffic.data");
         fprintf(file, "分析周期：%d s\n", *cycle);
     }
@@ -412,18 +413,13 @@ void data_analysis(u_char *userarg, const struct pcap_pkthdr *pkthdr, const u_ch
     fclose(file);
 }
 
-int main(int argc, char **argv) {
-    char *file_in = "traffic.data";
+void init(char *file_in, char* file_out, int cycle) {
     FILE *file_i = fopen(file_in, "r");
-    printf("载入文件...\n");
-    int cycle;
-    printf("输入分析周期(s)：");
-    scanf("%d", &cycle);
-
+    printf("Loading file\n");
     pcap_t *handle;
     char err_inf[PCAP_ERRBUF_SIZE];
     handle = pcap_open_offline(file_in, err_inf);
-    printf("开始分析\n");
+    printf("Starting analysis\n");
 
     flow_TCP = (net_link_header *)malloc(sizeof(net_link_header));
     flow_UDP = (net_link_header *)malloc(sizeof(net_link_header));
@@ -431,9 +427,41 @@ int main(int argc, char **argv) {
     init_flow_link(flow_UDP);
     
     pcap_loop(handle, -1, data_analysis, &cycle);
-    printf("分析结束\n");
+    printf("Analysis success\n");
     free(flow_TCP);
     free(flow_UDP);
 
     return 0;
 }
+
+#if 1
+int main(int argc, void *argv[])
+{
+	char *option, *file_in;
+    int time;
+
+	if (argc != 5)
+	{
+		printf("Usage: data_analysis <--analyse> <file_in> <file_out> <time>\n");
+		return 0;
+	}
+	else
+	{
+		option = argv[1];
+        file_in = argv[2];
+        file_out = argv[3];
+		time = strtol(argv[4], NULL, 10);
+		if (strcmp(option, "--analyse") == 0)
+		{
+			init(file_in, file_out, time);
+		}
+		else
+		{
+			printf("Usage: data_analysis <--analyse> <file_in> <file_out> <time>\n");
+			return 0;
+		}
+	}
+
+	return 0;
+}
+#endif
