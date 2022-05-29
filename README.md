@@ -9,7 +9,6 @@ C Implementation of Real-time Capture and Data Analysis of Network Data Packets
 1. Operating system：Linux
 2. Programming language：C
 3. Network traffic capture library：libpcap
-4. Code editor：vscode
 
 ## Program running
 
