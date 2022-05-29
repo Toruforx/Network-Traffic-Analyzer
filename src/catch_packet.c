@@ -111,7 +111,7 @@ int main(int argc, void *argv[])
 
     if (argc != 5)
     {
-        printf("Usage: catch_packet <--catch> <file_out> <filter> <time>\n");
+        printf("Usage: catch <--catch> <file_out> <filter> <time>\n");
         return 0;
     }
     else
@@ -126,7 +126,7 @@ int main(int argc, void *argv[])
         }
         else
         {
-            printf("Usage: catch_packet <--catch> <file_out> <filter> <time>\n");
+            printf("Usage: catch <--catch> <file_out> <filter> <time>\n");
             return 0;
         }
     }

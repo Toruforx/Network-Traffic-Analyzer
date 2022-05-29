@@ -495,7 +495,7 @@ int main(int argc, void *argv[])
 
     if (argc != 5)
     {
-        printf("Usage: data_analysis <--analyse> <file_in> <file_out> <time>\n");
+        printf("Usage: analyse <--analyse> <file_in> <file_out> <time>\n");
         return 0;
     }
     else
@@ -510,7 +510,7 @@ int main(int argc, void *argv[])
         }
         else
         {
-            printf("Usage: data_analysis <--analyse> <file_in> <file_out> <time>\n");
+            printf("Usage: analyse <--analyse> <file_in> <file_out> <time>\n");
             return 0;
         }
     }
