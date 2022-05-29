@@ -1,6 +1,6 @@
-all: ana catch
+all: analyse catch
 
-ana: data_analysis.o
+analyse: data_analysis.o
 	gcc $< -o $@ -lpcap
 
 catch: catch_packet.o
@@ -13,4 +13,4 @@ data_analysis.o: data_analysis.c
 	gcc -c data_analysis.c -o data_analysis.o -g
 
 clean:
-	rm -rf ana catch *.o *.data
+	rm -rf analyse catch *.o *.data

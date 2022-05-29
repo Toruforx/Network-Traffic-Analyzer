@@ -7,7 +7,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Sun May 29 00:34:55 2022
+# Make data base, printed on Sun May 29 14:01:20 2022
 
 # Variables
 
@@ -42,18 +42,16 @@ JRE_HOME = C:\Java\jdk-16.0.2\jre
 # environment
 WINDIR = C:\Windows
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"C:\\Users\\35947\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\tcf.json","_cacheRoot":"C:\\Users\\3 
-5947\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"C:\\Users\\35947\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"C:\\Users\\35947\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"42e84e0914b17800d483f69e299e1b00.zh-cn","_translationsConfigFile":"C:\\Users\\35947\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\tcf.json","_cacheRoot":"C:\\Users\\35947\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn","_resolvedLanguagePackCoreLocation":"C:\\Users\\35947\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"C:\\Users\\35947\\AppData\\Roaming\\Code\\clp\\42e84e0914b17800d483f69e299e1b00.zh-cn\\corrupted.info","_languagePackSupport":true}
 # environment
 ONEDRIVE = C:\Users\35947\OneDrive
 # environment
 MAVEN_HOME = D:\apache-maven-3.8.4-bin\apache-maven-3.8.4
+ 
 # environment
 PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
 # makefile
 MAKEFILE_LIST := 
-# environment
-FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
 TMP = C:\Users\35947\AppData\Local\Temp
 # environment
@@ -63,7 +61,7 @@ PROGRAMW6432 = C:\Program Files
 # environment
 PROGRAMDATA = C:\ProgramData
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-9a00f586-ff98-4740-b85a-3833b0264814-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-06604880-aaf6-4dd0-9da4-2bd77ae3516f-sock
 # environment
 VSCODE_CWD = D:\Program Files\Microsoft VS Code
 # environment
@@ -93,7 +91,7 @@ ELECTRON_RUN_AS_NODE = 1
 # automatic
 %F = $(notdir $%)
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15476_XEKYUIPYRKQJTDLM
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_4572_CRDBNMROQZQIXJMM
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -141,7 +139,7 @@ MAKE_VERSION := 3.82.90
 # makefile
 .DEFAULT_GOAL := 
 # environment
-CLASSPATH = .;C:\Java\jdk-16.0.2\lib;C:\Java\jdk-16.0.2\jre\lib;D:\LINGO64_17\Lingo17.jar
+CLASSPATH = .;C:\Java\jdk-16.0.2\lib;%JRE_HOME%\lib;D:\LINGO64_17\Lingo17.jar
 # environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # automatic
@@ -201,8 +199,7 @@ SYSTEMDRIVE = C:
 # environment
 SESSIONNAME = Console
 # environment
-PROCESSOR_REVISION =  
-6801
+PROCESSOR_REVISION = 6801
 # environment
 MOZ_PLUGIN_PATH = D:\Program Files (x86)\Foxit Software\Foxit Reader Plus\plugins\
 # default
@@ -214,13 +211,11 @@ LANG = C
 # environment
 PROCESSOR_LEVEL = 23
 # environment
-FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
-# environment
-VSCODE_PID = 15476
+VSCODE_PID = 4572
 # environment
 USERDOMAIN_ROAMINGPROFILE = LAPTOP-LJQDU8G0
 # variable set hash-table stats:
-# Load=103/1024=10%, Rehash=0, Collisions=12/119=10%
+# Load=101/1024=10%, Rehash=0, Collisions=12/117=10%
 
 # Pattern-specific Variable Values
 
@@ -233,7 +228,8 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-LJQDU8G0
 # D:\apache-maven-3.8.4-bin\apache-maven-3.8.4\bin: could not be stat'd.
 # . (key c:/Users/35947/Desktop/Hands/Network-Traffic-Analyzer, mtime 1653752568): 7 files, no impossibilities.
 # C:\Users\35947\AppData\Local\Programs\Python\Python39\ (key C:/Users/35947/AppData/Local/Programs/Python/Python39/, mtime 1629252857): 18 files, no impossibilities.
-# C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1645579065): 8 files, no impossibilities.
+# C:\Program Files\Git\cmd (key C:/Program Files/Git/ 
+cmd, mtime 1645579065): 8 files, no impossibilities.
 # C:\Windows\System32\OpenSSH\: could not be stat'd.
 # C:\Users\35947\AppData\Local\Programs\Python\Python39\Scripts\ (key C:/Users/35947/AppData/Local/Programs/Python/Python39/Scripts/, mtime 1631191906): 15 files, no impossibilities.
 # C:\Users\35947\go\bin: could not be stat'd.
@@ -315,7 +311,7 @@ GNUmakefile:
 # strcache performance: lookups = 3810 / hit rate = 5%
 # hash-table stats:
 # Load=3619/8192=44%, Rehash=0, Collisions=1351/3810=35%
-# Finished Make data base on Sun May 29 00:34:55 2022
+# Finished Make data base on Sun May 29 14:01:20 2022
 
  
 make.exe: *** No rule to make target 'all'.  Stop.
