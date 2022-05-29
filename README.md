@@ -16,11 +16,7 @@ C Implementation of Real-time Capture and Data Analysis of Network Data Packets
 1. **compile and link**
 
    ```makefile
-   gcc -c catch_packet.c -o catch_packet.o
-   gcc catch_packet.o -o catch -lpcap -lpthread
-   
-   gcc -c data_analysis.c -o data_analysis.o
-   gcc data_analysis.o -o analyse -lpcap
+   make
    ```
 
 2. **run the program**
