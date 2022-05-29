@@ -27,6 +27,7 @@ C Implementation of Real-time Capture and Data Analysis of Network Data Packets
 
    ```
    sudo ./catch <--catch> <file_out> <filter> <time>
+   
    sudo ./analyse <--analyse> <file_in> <file_out> <time>
    ```
 
